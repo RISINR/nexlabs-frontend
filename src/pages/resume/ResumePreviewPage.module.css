@@ -1,0 +1,1313 @@
+/* ResumePreviewPage Styles - Isolated Module */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 52%, #f3f4f6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.blob1 {
+  top: -40px;
+  right: -40px;
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #dbeafe 0%, #e5e7eb 100%);
+  opacity: 0.18;
+}
+
+.blob2 {
+  top: 50%;
+  left: -40px;
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #e5e7eb 0%, #dbeafe 100%);
+  opacity: 0.2;
+}
+
+.blob3 {
+  bottom: -40px;
+  right: 33%;
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #e5e7eb 0%, #cbd5e1 100%);
+  opacity: 0.22;
+}
+
+.content {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* leave room for a fixed navbar: default fallback is 72px */
+  padding: calc(var(--navbar-height, 72px) + 4rem) 1.5rem 3rem 1.5rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1280px) {
+  .layoutGrid {
+    grid-template-columns: 260px 1fr 240px; /* increase left sidebar for desktop */
+    align-items: start;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .layoutGrid {
+    grid-template-columns: 320px 1fr; /* increase left sidebar for medium screens */
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #eef2f7;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 0.25s ease, transform 0.18s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+}
+
+.cardHeader {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.templatePreview {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+}
+
+.templateIcon {
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.6rem;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: white;
+}
+
+.templateName {
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.templateDesc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.changeTemplateBtn {
+  width: 100%;
+  padding: 0.55rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #0f172a;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.changeTemplateBtn:hover {
+  background: #f3f4f6;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.progressList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.progressItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progressIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.progressIcon.completed {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.progressIcon.pending {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.progressLabel.completed {
+  color: #111827;
+}
+
+.progressLabel.pending {
+  color: #6b7280;
+}
+
+.infoCard {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.25rem;
+}
+
+/* Modifier to make action panel match `.card` but without hover transform */
+.actionCard {
+  padding: 1rem;
+  /* align the action panel with the top of the preview (slightly raised) */
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 12px;
+}
+
+.actionCard:hover {
+  transform: none;
+}
+
+.infoTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.infoText {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1280px) {
+  .mainContent {
+    flex-direction: column;
+    /* keep column by default; inner flex handles preview + actions */
+  }
+}
+
+.actionButtonsContainer {
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: static;
+  align-self: center;
+  margin-left: 0;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0.9rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* Ensure action buttons in the preview panel share consistent size */
+.actionButtons .button {
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.75rem 0.9rem;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.actionButtons .button {
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.actionButtons .button:focus {
+  outline: 3px solid rgba(37,99,235,0.12);
+  outline-offset: 3px;
+}
+
+.actionButtons .buttonPrimary {
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+  min-width: 160px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+  /* Save PDF specific layout */
+  .saveContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .saveNote {
+    font-size: 0.78rem;
+    color: #6b7280;
+    text-align: center;
+    max-width: none;
+    line-height: 1.2;
+  }
+
+.actionButtons .buttonSecondary {
+  padding: 0.55rem 0.9rem;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #0f172a;
+  min-width: 110px;
+}
+
+.actionButtons .buttonTertiary {
+  padding: 0.55rem 0.9rem;
+  background: transparent;
+  border: 1px solid #111827;
+  color: #111827;
+  min-width: 110px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.05rem;
+  font-weight: 700;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  min-height: 48px;
+}
+
+.buttonPrimary {
+  background: linear-gradient(90deg, #111827 0%, #374151 100%);
+  color: white;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+}
+
+.buttonPrimary:hover:not(:disabled) {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(90deg, #0f172a 0%, #111827 100%);
+}
+
+  /* AI button styles */
+  .actionButtons .aiButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg, #ffffff 0%, #f8fafc 100%);
+    color: #111827;
+    border: 1px solid #d1d5db;
+    min-width: 120px;
+    padding: 0.65rem 0.9rem;
+    font-weight: 700;
+  }
+
+  .actionButtons .aiButton:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  /* Interview button variations */
+  .actionButtons .interviewButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .actionButtons .interviewButton svg {
+    transform: translateY(-1px);
+  }
+
+  /* Ensure Interview button text and icon turn white on hover */
+  .actionButtons .interviewButton:hover {
+    color: #111827;
+  }
+
+  .actionButtons .interviewButton:hover svg {
+    color: #111827;
+    stroke: #111827;
+    fill: #111827;
+  }
+
+  /* Icon spacing within action buttons */
+  .actionButtons .button svg {
+    flex-shrink: 0;
+  }
+
+  /* Stacked button: icon above label for compact vertical layout */
+  .stackedButton {
+    flex-direction: column;
+    padding: 0.75rem 0.9rem;
+    gap: 0.45rem;
+    min-width: 0;
+    min-height: 48px;
+    width: 100%;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stackedButton span {
+    display: block;
+    line-height: 1;
+  }
+
+  .stackedButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Force icon above label and tighten spacing */
+  .stackedButton > svg,
+  .stackedButton > :first-child {
+    order: -1;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stackedButton > span {
+    order: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+.buttonSecondary {
+  background: white;
+  border: 2px solid #fdecef;
+  color: #1e3a8a;
+}
+
+.buttonSecondary:hover {
+  background: #fff5f8;
+}
+
+.buttonTertiary {
+  background: #111827;
+  color: white;
+  margin-left: 0;
+}
+
+.buttonTertiary:hover {
+  background: #000000;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.previewContainer {
+  background: transparent;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  width: 100%;
+  max-width: none; /* allow container to fill available center column */
+  flex: 1 1 auto; /* allow container to grow to fill center area */
+  display: flex;
+  justify-content: center; /* center preview inside the center column */
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.previewWrapper {
+  background: #ffffff;
+  border-radius: 1rem;
+  overflow: visible;
+  border: 1px solid #e6edf3;
+  box-shadow: 0 18px 40px rgba(2,6,23,0.08), 0 2px 6px rgba(2,6,23,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 612px; /* match PREVIEW_MD_WIDTH */
+  aspect-ratio: 8.5 / 11;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto; /* ensure wrapper is centered in its container */
+}
+
+/* Fullscreen preview modal */
+.fullscreenModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 1400px; /* allow larger modal for wider preview */
+  height: 92vh;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.modalToolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eef2f7;
+  background: rgba(255,255,255,0.95);
+  z-index: 4;
+}
+
+.modalBody {
+  padding: 72px 16px 16px 16px; /* leave room for toolbar so content sits below it */
+  flex: 1 1 auto;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start; /* keep vertical start so scrolling can reach top */
+  justify-content: center; /* center preview horizontally */
+}
+
+.modalPreview {
+  width: 100%;
+  max-width: 612px; /* match in-page preview max-width (PREVIEW_MD_WIDTH) */
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid #e6edf3;
+  box-shadow: 0 18px 40px rgba(2,6,23,0.08), 0 2px 6px rgba(2,6,23,0.04);
+  aspect-ratio: 8.5 / 11; /* same paper-like ratio as previewWrapper */
+}
+
+/* Zoom controls inside modal toolbar */
+.zoomControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zoomButton {
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding: 6px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.zoomButton:hover {
+  background: #f8fafc;
+}
+
+.zoomLevel {
+  min-width: 44px;
+  text-align: center;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Ensure modal preview content scales nicely and remains scrollable */
+.modalPreview > * {
+  width: 100%;
+  height: auto;
+}
+
+.editStudioBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.editStudioModal {
+  width: 100%;
+  max-width: 1180px;
+  max-height: 92vh;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 32px 80px rgba(2, 6, 23, 0.28);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.editStudioHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.editStudioHeader h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.editStudioHeader p {
+  margin: 4px 0 0 0;
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+.editStudioBody {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 0;
+  flex: 1;
+}
+
+.editStudioTabs {
+  border-right: 1px solid #e5e7eb;
+  background: #f8fafc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editStudioTab {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editStudioTabActive {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.editStudioPanel {
+  padding: 18px 20px 20px;
+  overflow: auto;
+}
+
+.editStudioFieldGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.editStudioField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editStudioField label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.editStudioInput,
+.editStudioTextarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  color: #0f172a;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.editStudioTextarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.editStudioLongFieldPreview {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.editStudioLongFieldPreview p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  max-height: 120px;
+  overflow: auto;
+}
+
+.editStudioSectionTitle {
+  margin: 0 0 10px 0;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.editStudioSubtle {
+  margin: 0 0 12px 0;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.editStudioExperienceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.editStudioExperienceChip {
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editStudioExperienceChipActive {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #ffffff;
+}
+
+.editStudioFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.longFieldModal {
+  width: 100%;
+  max-width: 860px;
+  max-height: 86vh;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 28px 64px rgba(2, 6, 23, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .editStudioBody {
+    grid-template-columns: 1fr;
+  }
+
+  .editStudioTabs {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .editStudioTab {
+    width: auto;
+  }
+
+  .editStudioFieldGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.previewContent {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fontControlCard {
+  margin-top: 8px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.templateFontOverlay {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  z-index: 60;
+  border: 1px solid #dbeafe;
+  background: rgba(248, 251, 255, 0.98);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(10px);
+  overflow: auto;
+}
+
+.templateFontOverlayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e0ecff;
+}
+
+.fontPickerRow {
+  display: grid;
+  gap: 6px;
+}
+
+.fontPickerRow label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.fontPickerSelect {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.84rem;
+  padding: 0.62rem 0.75rem;
+  box-sizing: border-box;
+}
+
+.contactProfileList {
+  display: grid;
+  gap: 8px;
+}
+
+.contactProfileRow {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  cursor: grab;
+}
+
+.contactProfileRow input {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.84rem;
+  color: #0f172a;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.photoLensPreview {
+  width: 100%;
+  min-height: 220px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photoLensPreviewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.photoLensEmpty {
+  padding: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.photoLensActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.photoLensHistorySection {
+  display: grid;
+  gap: 8px;
+}
+
+.photoLensHistoryHeader {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.photoLensPopup {
+  width: min(430px, calc(100vw - 2rem));
+  max-height: min(82vh, 760px);
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.photoLensPopupBody {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+  overflow: auto;
+}
+
+.photoLensPopupFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #e0ecff;
+  background: #ffffff;
+}
+
+.photoHistoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.photoHistoryItem {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.photoHistoryItemActive {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.14);
+}
+
+.photoHistoryThumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.lensSelect {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.84rem;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.lensPanel {
+  position: absolute;
+  width: min(360px, calc(100% - 24px));
+  max-height: min(78%, 560px);
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.14);
+  backdrop-filter: blur(10px);
+  z-index: 6;
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+  animation: lensIn 180ms ease-out;
+}
+
+@keyframes lensIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lensFocusHover {
+  position: absolute;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.05);
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.16);
+  pointer-events: none;
+  z-index: 5;
+  animation: focusPulse 1.4s ease-in-out infinite;
+}
+
+.lensCorner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(37, 99, 235, 0.95);
+  border-style: solid;
+  filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.45));
+}
+
+.lensCornerTL {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 6px;
+}
+
+.lensCornerTR {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 6px;
+}
+
+.lensCornerBL {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 6px;
+}
+
+.lensCornerBR {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 6px;
+}
+
+@keyframes focusPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.01);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+}
+
+.lensHint {
+  margin: -2px 0 2px;
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+.lensHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.lensDragHandle {
+  cursor: grab;
+  user-select: none;
+}
+
+.lensDragHandle:active {
+  cursor: grabbing;
+}
+
+.lensAutosave {
+  font-size: 0.75rem;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.lensTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lensTab {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.lensTabActive {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.lensBody {
+  display: grid;
+  gap: 10px;
+}
+
+.lensField {
+  display: grid;
+  gap: 4px;
+}
+
+.lensField label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.lensField input,
+.lensField textarea {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.84rem;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.lensField textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
+.lensChip {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lensChipActive {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.lensListItem {
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.lensSectionControl {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.lensSectionControl label {
+  font-size: 0.74rem;
+  color: #334155;
+  font-weight: 700;
+}
+
+.lensSectionControl span {
+  font-size: 0.74rem;
+  color: #1d4ed8;
+  font-weight: 700;
+  min-width: 42px;
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .layoutGrid {
+    grid-template-columns: 320px 1fr;
+  }
+  
+  .actionButtonsContainer {
+    position: relative;
+    top: 0;
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    order: 2;
+  }
+  
+  .mainContent {
+    order: 1;
+  }
+  
+  .actionButtonsContainer {
+    order: 3;
+    grid-column: auto;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .actionButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 400px;
+  }
+  
+  .button {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .actionCard {
+    flex: 0 0 160px; /* free center space when sidebar is wider */
+    max-width: 180px;
+  }
+}

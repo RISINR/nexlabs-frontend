@@ -1,0 +1,94 @@
+.interviewRoot {
+  width: 100%;
+  clear: both;
+  box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1100px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  /* Add top offset so fixed navbar doesn't overlap content. */
+  padding-top: calc(var(--navbar-height, 72px) + 3.5rem);
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.featureCard {
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+}
+
+.howItWorks {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stepsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Defensive rules to prevent global layout overrides */
+.interviewRoot, .interviewRoot * {
+  box-sizing: border-box !important;
+}
+.container {
+  text-align: left;
+}
+
+/* Ensure main container is centered even if outer shells set flex or floats */
+.interviewRoot {
+  display: block !important;
+}

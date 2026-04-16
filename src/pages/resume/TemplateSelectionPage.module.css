@@ -1,0 +1,466 @@
+/* TemplateSelectionPage - Isolated Styling */
+
+.container {
+  min-height: 100vh;
+  background: var(--form-bg);
+  margin-top: 80px;
+}
+
+.contentWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .contentWrapper {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.625rem; /* 42px */
+  font-weight: 600;
+  color: var(--form-label);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem; /* 20px */
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
+  max-width: 32rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Category Filter */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  height: 32px;
+  border-radius: 9999px;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filterButtonActive {
+  background: var(--form-label);
+  color: rgb(255, 255, 255);
+}
+
+.filterButtonInactive {
+  background: var(--form-bg);
+  border: 1px solid var(--form-input-border);
+  color: var(--form-label);
+  transition: all 0.3s;
+}
+
+.filterButtonInactive:hover {
+  border-color: var(--form-input-border-hover);
+  background: var(--form-accent-blue-light);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.15);
+}
+
+/* Templates Grid Container */
+.gridWrapper {
+  background: var(--form-bg);
+  border-radius: 1.5rem;
+  border: 1px solid var(--form-input-border);
+  padding: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s;
+}
+
+@media (min-width: 1024px) {
+  .gridWrapper {
+    padding: 3rem;
+  }
+}
+
+/* Templates Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Template Card */
+.templateCard {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  transition: all 0.3s;
+  background: #fff;
+  border: 1px solid var(--form-input-border);
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.templateCard:hover {
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12), 0 0 16px var(--template-primary-color, rgba(29, 139, 216, 0.26));
+  border-color: var(--template-primary-color, #1d8bd8);
+}
+
+.templatePreview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.templateName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #222;
+  padding: 1.1rem 1rem 1.2rem 1rem;
+  background: linear-gradient(to top, #fff 90%, rgba(255,255,255,0));
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+/* Hover Overlay */
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.previewButton {
+  background: var(--form-bg);
+  color: var(--form-label);
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--form-input-border);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.previewButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 12px var(--template-primary-color, rgba(59, 130, 246, 0.3));
+  border-color: var(--template-primary-color, var(--form-accent-blue));
+  background: var(--form-accent-blue-light);
+}
+
+.previewButton:active {
+  transform: scale(0.98);
+}
+
+.resumeProgressCard {
+  margin-top: 0.7rem;
+  padding: 0.65rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+}
+
+.resumeProgressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.resumeProgressTitle {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.resumeProgressCount {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.resumeProgressMeta {
+  margin-top: 0.2rem;
+  font-size: 0.73rem;
+  color: #475569;
+}
+
+.resumeProgressBar {
+  margin-top: 0.35rem;
+  height: 6px;
+  border-radius: 999px;
+  background: #dbeafe;
+  overflow: hidden;
+}
+
+.resumeProgressBarFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+}
+
+.resumeProgressList {
+  display: grid;
+  gap: 0.28rem;
+  margin-top: 0.45rem;
+}
+
+.resumeProgressItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.resumeProgressIcon {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.resumeProgressIcon span {
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.resumeProgressIconDone {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.resumeProgressIconPending {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.resumeProgressLabelDone {
+  color: #0f172a;
+}
+
+.resumeProgressLabelPending {
+  color: #64748b;
+}
+
+.resumeCardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .resumeCardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .resumeCardsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.resumeItemCard {
+  border: 1px solid #dbe1ea;
+  border-radius: 0.95rem;
+  padding: 1rem;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.resumeItemCard:hover {
+  border-color: #bcdff7;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.resumeCardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.resumeCardMeta {
+  min-width: 0;
+}
+
+.resumeCardTitle {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.resumeCardDate {
+  margin: 0.2rem 0 0 0;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.resumeCardRole {
+  margin: 0;
+  color: #111827;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.resumeTemplateThumb {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  overflow: hidden;
+  position: relative;
+}
+
+.resumeTemplateThumbInner {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: #fff;
+}
+
+.resumeTemplateThumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.resumeCardActions {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.resumeActionBtn {
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.72rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.resumeActionBtn:active {
+  transform: translateY(1px);
+}
+
+.resumeActionPreview {
+  background: #e6f6ff;
+  color: #167cc2;
+}
+
+.resumeActionPreview:hover {
+  background: #cfeeff;
+}
+
+.resumeActionEdit {
+  flex: 1;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
+}
+
+.resumeActionEdit:hover {
+  background: #f3f4f6;
+}
+
+.resumeActionDelete {
+  background: #ffffff;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.resumeActionDelete:hover {
+  background: #fef2f2;
+}
+
+@media (max-width: 640px) {
+  .resumeCardActions {
+    flex-wrap: wrap;
+  }
+
+  .resumeActionBtn {
+    flex: 1 1 auto;
+  }
+}

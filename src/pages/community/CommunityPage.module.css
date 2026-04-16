@@ -1,0 +1,328 @@
+.root{min-height:100vh;background:#F8FAFC;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+.wrap{max-width:1200px;margin:0 auto;padding:calc(var(--navbar-height,72px) + 20px) 24px}
+.pageTitle{font-size:1.45rem;margin:0;font-weight:500;font-family:Poppins, 'Lexend', Inter, system-ui}
+.pageDesc{color:var(--nl-muted);margin:6px 0 0 0;font-size:0.98rem}
+.headerBar{display:grid;grid-template-columns:1fr 540px 1fr;align-items:center;gap:12px;margin-bottom:18px}
+.headerControls{display:flex;align-items:center;gap:12px}
+.searchWrap{position:relative}
+.search{padding:10px 34px 10px 10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);min-width:260px}
+.search{font-family:Poppins, Inter, system-ui; font-size:13px; padding:8px 34px 8px 10px; border-radius:10px; border:1px solid rgba(15,23,42,0.06); min-width:260px}
+.clear{position:absolute;right:6px;top:6px;border:0;background:transparent;padding:6px;cursor:pointer}
+.toggleRow{display:flex;align-items:center;gap:8px}
+.iconBtn{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:4px 6px;border-radius:8px;cursor:pointer;height:34px;display:inline-flex;align-items:center;justify-content:center}
+.sort{padding:6px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);font-family:Poppins, Inter, system-ui;appearance:none;background-image:linear-gradient(transparent,transparent);padding-right:28px}
+
+.devPreviewBtn{padding:6px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--nl-electric);cursor:pointer;font-size:13px}
+.previewBtn{display:inline-flex;align-items:center;white-space:nowrap;padding:6px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:linear-gradient(90deg,#0b74ff,#0066ff);color:#fff;text-decoration:none;font-weight:700;font-size:13px}
+
+.pageGrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px}
+.leftCol{min-height:360px;min-width:0}
+.rightCol{display:flex;flex-direction:column;gap:12px}
+.filterChips{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.chip{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid rgba(15,23,42,0.04);cursor:pointer}
+.chipActive{border-color:var(--nl-electric);box-shadow:0 8px 28px rgba(0,97,255,0.06)}
+
+/* grid/list */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.list{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;gap:12px;background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(15,23,42,0.06);cursor:pointer}
+.card{transition:transform 180ms ease, box-shadow 180ms ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(2,6,23,0.08)}
+.cardLeft{width:80px}
+.avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#e6eefc,#f0f7ff);display:flex;align-items:center;justify-content:center;font-weight:800}
+.cardBody{flex:1}
+.cardTitle{font-weight:500;font-size:1.02rem;font-family:Poppins, 'Lexend', Inter, system-ui}
+.muted{color:var(--nl-muted);font-weight:600;font-size:0.9rem}
+.cardMeta{font-size:13px;color:var(--nl-muted);margin-top:6px}
+.excerpt{color:#0f172a;margin-top:8px}
+.cardFooter{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.skillsSmall{display:flex;gap:8px;flex-wrap:wrap}
+.skillPill{background:#f8fafc;padding:6px 8px;border-radius:999px;border:1px solid rgba(15,23,42,0.04);font-size:12px}
+.actions{display:flex;gap:8px}
+.connect{background:transparent;border:1px solid var(--nl-electric-08);padding:6px 10px;border-radius:8px;cursor:pointer}
+.review{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:6px 10px;border-radius:8px;cursor:pointer}
+
+.sideCard{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(15,23,42,0.06);margin-bottom:12px}
+.sideTitle{font-weight:800;margin-bottom:8px}
+.sideItem{padding:8px 0;color:var(--nl-muted)}
+
+/* make news strip and cards feel denser */
+.newsCard{min-width:300px;padding:12px}
+.newsImage{height:140px}
+
+/* small helpers */
+.postsFullWidth{display:flex;flex-direction:column;gap:10px}
+
+.sectionCard{background:transparent;padding:0;margin-bottom:14px}
+.sectionHeader{font-weight:500;font-size:1.05rem;margin-bottom:10px;font-family:Poppins, 'Lexend', Inter, system-ui}
+.sectionCard > .postsFullWidth, .sectionCard > .grid, .sectionCard > .list{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(15,23,42,0.06)}
+
+/* members carousel */
+.membersRow{display:flex;gap:12px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:6px;max-width:100%;box-sizing:border-box;width:100%}
+.memberCard{flex:0 0 auto;width:300px;height:140px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;border-radius:12px;padding:10px;border:1px solid rgba(15,23,42,0.06);transition:transform 180ms ease, box-shadow 160ms ease, opacity 240ms ease;animation:fadeInUp 360ms ease both;background-clip:padding-box;box-sizing:border-box;overflow:hidden;scroll-snap-align:start;will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0)}
+
+/* wrapper that clips overflow while allowing inner horizontal scroll */
+.membersRowWrap{overflow:hidden;position:relative}
+
+/* enable scroll snapping for nicer slide behaviour */
+.membersRow{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.memberCard{scroll-snap-align:start}
+
+/* allow left column to scroll horizontally without clipping children */
+.leftCol{min-width:0}
+.memberCard:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 12px 26px rgba(2,6,23,0.08);border-color:transparent}
+
+/* subtle entrance animation for member cards */
+@keyframes fadeInUp{
+	from{opacity:0;transform:translateY(8px)}
+	to{opacity:1;transform:translateY(0)}
+}
+
+@media (prefers-reduced-motion: reduce){
+	.memberCard{animation:none;transition:none}
+}
+.memberCard{position:relative}
+.memberActions{position:absolute;top:8px;right:8px;display:flex;flex-direction:row;gap:8px;opacity:0;pointer-events:none;transition:opacity .12s ease;background:transparent}
+.memberCard:hover .memberActions{opacity:1;pointer-events:auto}
+
+/* inline views badge placed inside action row (left of icons) */
+.viewsInline{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.96);padding:6px 8px;border-radius:999px;border:1px solid rgba(15,23,42,0.06);font-weight:800;font-size:13px;color:#0f172a;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+.viewsInline svg{width:14px;height:14px;flex-shrink:0}
+.actionSmallLabel{font-size:13px;margin-left:4px;color:var(--nl-muted);font-weight:800}
+
+/* views badge shown when hovering over member card */
+.viewsBadge{position:absolute;top:8px;right:56px;display:none;align-items:center;gap:8px;background:rgba(255,255,255,0.98);padding:6px 10px;border-radius:12px;border:1px solid rgba(15,23,42,0.06);font-weight:800;font-size:13px;color:#0f172a;box-shadow:0 8px 28px rgba(2,6,23,0.08);z-index:80}
+.memberCard:hover .viewsBadge{display:inline-flex}
+.actionIcon{width:36px;height:36px;border-radius:8px;background:#fff;border:1px solid rgba(15,23,42,0.06);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:6px}
+.actionSmallLabel{font-size:12px;margin-left:6px;color:var(--nl-muted);font-weight:700}
+.membersNavBtn{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(15,23,42,0.06);cursor:pointer;transition:transform 120ms ease,box-shadow 120ms ease;font-weight:700}
+.membersNavBtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+.membersNavBtnLight{background:#fff;color:#0f172a;border:1px solid rgba(15,23,42,0.06);width:34px;height:34px}
+.membersNavBtnDark{background:#0b0b0b;color:#fff;border:0;width:38px;height:38px}
+.membersNavBtnDark:hover{box-shadow:0 12px 36px rgba(2,6,23,0.18)}
+
+.connect{transition:background 140ms ease,transform 120ms ease}
+.connect:hover{transform:translateY(-2px);background:linear-gradient(90deg,#0b74ff,#0066ff);color:#fff;border-color:transparent}
+
+/* circular avatars for members */
+.memberAvatar{width:48px;height:48px;border-radius:50%;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:800;overflow:hidden}
+.memberAvatarSmall{width:40px;height:40px;border-radius:50%;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:700;overflow:hidden}
+
+/* post images */
+.postImage{width:100%;max-height:360px;object-fit:cover;border-radius:8px;display:block}
+.postImagePreview{width:100%;max-height:240px;object-fit:cover;border-radius:8px;display:block}
+
+/* gallery variants */
+.postImages{display:grid;gap:8px}
+.postImages img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
+
+/* compact gallery sizes: reduce height when multiple images are present */
+.postImages.images-1{grid-template-columns:1fr}
+.postImages.images-1 img{height:320px}
+
+.postImages.images-2{grid-template-columns:2fr 1fr;grid-auto-rows:140px}
+.postImages.images-2 > div:first-child img{grid-row:span 2;height:100%}
+
+.postImages.images-3{grid-template-columns:2fr 1fr;grid-auto-rows:90px}
+.postImages.images-3 > div:first-child img{grid-row:span 2;height:100%}
+
+.postImages.images-4,.postImages.images-5,.postImages.images-6{grid-template-columns:1fr 1fr;grid-auto-rows:90px}
+
+@media (max-width:740px){
+	.postImages.images-1 img{height:240px}
+	.postImages.images-2,.postImages.images-3,.postImages.images-4,.postImages.images-5,.postImages.images-6{grid-template-columns:1fr;grid-auto-rows:180px}
+}
+
+/* layout for >3 images: show first large + two stacked thumbnails; overlay +N on last */
+.postImages.images-more{grid-template-columns:2fr 1fr;grid-auto-rows:90px;gap:8px}
+.postImages.images-more > div:first-child img{height:100%;grid-row:span 2}
+.postImages.images-more > div{overflow:hidden}
+.postImages.images-more > div img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.postImages .imageOverlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.45));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px;border-radius:8px}
+
+@media (max-width:740px){
+	.postImages.images-more{grid-template-columns:1fr;grid-auto-rows:140px}
+	.postImages.images-more > div:first-child img{grid-row:auto}
+}
+
+/* hide horizontal scrollbar while keeping scrolling functional */
+.membersRow{
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.membersRow::-webkit-scrollbar{display:none} /* WebKit */
+
+@media(max-width:980px){
+	.memberCard{flex:0 0 calc(50% - 6px);min-width:140px;max-width:100%;width:auto;height:auto}
+}
+
+/* keep members row inside its container and prevent left overflow */
+.membersRow{padding-left:12px;padding-right:12px;margin-left:0}
+.membersRow > .memberCard:first-child{margin-left:0}
+
+/* news */
+.newsList{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow:auto;padding-right:6px}
+.newsRow{display:flex;gap:10px;align-items:flex-start}
+.newsTag{background:linear-gradient(90deg,#eef2ff,#fff);padding:6px 8px;border-radius:8px;font-weight:700}
+.newsTitle{color:#0f172a}
+.newsControlsRow{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+.smallBtn{background:#fff;border:1px solid rgba(15,23,42,0.06);padding:6px 8px;border-radius:8px;cursor:pointer}
+
+/* full-width horizontal news strip at page bottom */
+.newsStripWrap{margin-top:28px;border-top:1px solid rgba(15,23,42,0.04);padding-top:18px}
+.newsStrip{display:flex;gap:12px;overflow-x:auto;padding:12px 6px}
+.newsStrip{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.newsStrip::-webkit-scrollbar{display:none}
+.newsCard{min-width:320px;display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:12px;padding:10px;border:1px solid rgba(15,23,42,0.06)}
+.newsImage{width:100%;height:140px;border-radius:8px;object-fit:cover;background:#eef2ff;flex-shrink:0}
+.newsModalImage{width:100%;height:220px;object-fit:cover;border-radius:8px;background:#eef2ff;flex-shrink:0}
+.newsInfo{display:flex;flex-direction:column}
+.newsCardTag{font-weight:800;font-size:12px;color:var(--nl-electric)}
+.newsCardTitle{font-weight:500;margin-top:6px;color:#0f172a;font-family:Poppins, 'Lexend', Inter, system-ui}
+.newsCardDesc{font-size:13px;color:var(--nl-muted);margin-top:6px}
+
+/* circular nav buttons for news strip (light and dark variants) */
+.newsNav{display:flex;gap:8px;align-items:center}
+.newsNavBtn{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(15,23,42,0.06);cursor:pointer;transition:transform 120ms ease,box-shadow 120ms ease}
+.newsNavBtn:focus{outline:2px solid rgba(0,97,255,0.12);outline-offset:3px}
+.newsNavBtnLight{background:#fff;color:#0f172a;border:1px solid rgba(15,23,42,0.06);width:34px;height:34px}
+.newsNavBtnDark{background:#0b0b0b;color:#fff;border:0;width:38px;height:38px}
+.newsNavBtnLight:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(2,6,23,0.04)}
+.newsNavBtnDark:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(2,6,23,0.18)}
+
+/* post filters */
+.postFilters{display:flex;gap:8px;align-items:center;position:relative}
+.filterActive{background:linear-gradient(90deg,#0b74ff,#0066ff);color:#fff;border-color:transparent}
+.filterIconBtn{width:36px;height:36px;border-radius:8px;background:#fff;border:1px solid rgba(15,23,42,0.06);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:6px}
+.filterMenu{position:absolute;right:0;top:44px;background:#fff;border:1px solid rgba(15,23,42,0.06);border-radius:8px;box-shadow:0 14px 40px rgba(2,6,23,0.08);display:flex;flex-direction:column;min-width:160px;z-index:120;padding:6px}
+.filterMenuItem{background:transparent;border:0;padding:8px 10px;text-align:left;cursor:pointer;border-radius:6px;font-size:13px}
+.filterMenuItem:hover{background:linear-gradient(90deg,#f3f8ff,#eef6ff)}
+
+/* modal */
+.modalBackdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:90}
+.modal{background:#fff;border-radius:12px;padding:18px 14px;max-width:840px;width:100%;box-shadow:0 30px 70px rgba(2,6,23,0.5);position:relative}
+.modalInner{display:flex;gap:6px;align-items:flex-start}
+.modalAvatar{width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,#eef2ff,#fff);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px}
+.modalName{margin:0;font-size:1.25rem;font-weight:700;font-family:Poppins, 'Lexend', Inter, system-ui}
+.modalMeta{color:var(--nl-muted);margin-top:6px;font-size:0.95rem}
+.modalExcerpt{margin-top:10px;color:#0f172a}
+.profileDetails{display:flex;gap:18px;margin-top:12px}
+.profileLeft{flex:1}
+.profileRight{width:340px;display:flex;flex-direction:column;gap:12px;align-items:stretch;padding-left:20px;border-left:1px solid rgba(15,23,42,0.04)}
+
+.templateColumn{flex:0 0 auto;max-width:296px;padding-right:6px;display:flex;flex-direction:column;align-items:flex-start}
+.profileColumn{flex:1;min-width:320px}
+.profileHeader{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-right:24px}
+.ratingBig{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,#fff8e8,#fff);padding:6px 8px;border-radius:8px;border:1px solid rgba(15,23,42,0.04);font-weight:800;color:#b7791f}
+.ratingValue{font-size:1.05rem;font-weight:900}
+.badge{background:linear-gradient(90deg,#eef6ff,#f8fbff);padding:6px 10px;border-radius:999px;border:1px solid rgba(15,23,42,0.04);font-weight:800;font-size:12px;color:#0b4f9b}
+.profileRole{font-weight:700;color:#0f172a;margin-bottom:8px}
+.profileSection{margin-top:10px;padding-bottom:8px}
+.profileSectionTitle{font-size:13px;color:var(--nl-muted);font-weight:800;margin-bottom:6px}
+.profileResume{background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);font-weight:800;box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+.skillTag{background:#fff;border:1px solid rgba(15,23,42,0.04);padding:6px 8px;border-radius:8px;font-weight:700}
+.profileBio{color:#0f172a;line-height:1.5;margin-top:6px}
+.ratingLabel{font-weight:800}
+.templatePreviewWrap{border-radius:8px;overflow:hidden;border:1px solid rgba(15,23,42,0.06);background:#fff;display:flex;align-items:center;justify-content:center;min-height:180px}
+/* Use A4 aspect ratio for template preview (portrait) */
+.templatePreviewA4{
+	/* Display a comfortably large A4 preview while preserving aspect ratio */
+	width: 280px;
+	max-width: 40vw;
+	aspect-ratio: 210/297;
+	padding: 4px;
+}
+
+.templatePreview{
+	width:100%;
+	height:auto;
+	object-fit:cover;
+	display:block;
+	border-radius:6px;
+}
+.templatePreviewPlaceholder{padding:24px;color:var(--nl-muted);text-align:center}
+.templatePreviewPlaceholder{padding:24px;color:var(--nl-muted);text-align:center}
+.templateCaption{font-size:13px;color:var(--nl-muted);margin-top:8px;flex:1;min-width:0;overflow-wrap:break-word}
+
+.previewActionsRow{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:12px}
+.modalActions{display:flex;gap:8px;margin-top:12px}
+.actionBtn{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:#fff;cursor:pointer}
+.actionBtnActive{background:linear-gradient(90deg,#0b74ff,#0066ff);color:#fff;border-color:transparent}
+.actionLabel{margin-left:6px;font-weight:700}
+.modalClose{position:absolute;right:18px;top:18px;background:#fff;border:1px solid rgba(15,23,42,0.06);font-size:16px;padding:6px;width:36px;height:36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(2,6,23,0.06);transition:transform 120ms ease,box-shadow 120ms ease;z-index:110}
+.modalClose:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(2,6,23,0.08)}
+
+/* Fullscreen preview overlay */
+.fsBackdrop{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;padding:20px;z-index:200}
+.fsModal{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px}
+.fsClose{position:absolute;right:8px;top:8px;background:#fff;border:0;padding:8px;width:40px;height:40px;border-radius:999px;cursor:pointer;box-shadow:0 8px 26px rgba(2,6,23,0.4);z-index:999;pointer-events:auto}
+.fsControls{position:relative;z-index:220;display:flex;align-items:center;justify-content:space-between;width:100%;max-width:960px;color:#fff}
+.fsBtn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer}
+.fsImage{background:transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:6px}
+.fsImage img{max-width:100%;max-height:82vh;transition:transform 160ms ease}
+
+/* Chat FAB and window */
+.chatFab{position:fixed;right:20px;bottom:20px;z-index:260;background:#000;color:#fff;border-radius:999px;width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.3);cursor:pointer;border:0}
+.chatFabIcon{width:22px;height:22px;display:inline-block}
+.chatBadge{position:absolute;right:8px;bottom:30px;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#ef4444;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;box-shadow:0 6px 18px rgba(239,68,68,0.16);}
+.chatBadgeLabel{position:absolute;right:18px;bottom:82px;background:rgba(0,0,0,0.8);color:#fff;padding:6px 10px;border-radius:12px;font-size:12px;box-shadow:0 10px 30px rgba(0,0,0,0.28);white-space:nowrap}
+.chatBadgeLabel{z-index:280;cursor:pointer}
+.chatWindow{position:fixed;right:20px;bottom:88px;z-index:260;width:340px;max-height:75vh;background:#0b0b0b;border-radius:12px;box-shadow:0 20px 60px rgba(2,6,23,0.6);display:flex;flex-direction:column;overflow:hidden;color:#fff}
+.chatHeader{padding:12px 14px;background:transparent;border-bottom:1px solid rgba(255,255,255,0.04);font-weight:800;color:#fff}
+.chatMessages{flex:1;padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px;background:transparent}
+.chatContacts{display:flex;flex-direction:column;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.03);background:transparent;max-height:320px;overflow:auto}
+.chatContact{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px;cursor:pointer;border:1px solid rgba(255,255,255,0.03);width:100%}
+.chatContact:hover{background:rgba(255,255,255,0.02)}
+.chatContactAvatar{width:40px;height:40px;border-radius:8px;background:#eef2ff;color:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:800}
+.chatContactName{font-size:13px;color:#fff;font-weight:700}
+.chatMsg{padding:8px 10px;border-radius:8px;max-width:78%;background:rgba(255,255,255,0.06);align-self:flex-start;color:#fff}
+.chatMsgUser{background:#0b74ff;color:#fff;align-self:flex-end}
+.chatMsgOther{background:rgba(255,255,255,0.06);color:#fff;align-self:flex-start}
+.chatInputRow{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,0.04);background:transparent;align-items:center}
+.chatInput{flex:1;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:#fff}
+.chatSend{
+	background:#0b74ff;
+	color:#fff;
+	border:0;
+	padding:8px;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	border-radius:8px;
+	cursor:pointer;
+	width:40px;
+	height:40px;
+	transition:background .12s ease,transform .08s ease;
+}
+.chatSend svg{width:18px;height:18px;display:block;color:inherit}
+.chatSend svg path{stroke:currentColor;fill:currentColor}
+.chatSend:hover{transform:translateY(-2px)}
+.chatSend:disabled{
+	background:rgba(11,116,255,0.25);
+	color:rgba(255,255,255,0.6);
+	cursor:not-allowed;
+	opacity:1;
+}
+
+/* buttons */
+.btnPrimary{background:#0b0b0b;color:#fff;padding:8px 12px;border-radius:8px;border:0}
+.btnAlt{background:#fff;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:8px}
+.btnSecondary{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:8px}
+
+@media(max-width:980px){
+	.pageGrid{grid-template-columns:1fr}
+	.grid{grid-template-columns:1fr}
+	.search{min-width:160px}
+
+	.modalInner{flex-direction:column}
+	.profileDetails{flex-direction:column}
+	.profileRight{width:100%}
+}
+
+@media(max-width:640px){
+	.chatWindow{right:12px;left:12px;width:auto;max-height:70vh}
+	.chatContacts{max-height:40vh}
+}

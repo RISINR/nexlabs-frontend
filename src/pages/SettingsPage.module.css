@@ -1,0 +1,123 @@
+.cardContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.cardInner {
+  width: 100%;
+  max-width: 900px; /* slightly narrower to help fit vertical space */
+}
+
+.cardInner {
+  position: relative;
+}
+
+/* Ensure inner main content doesn't stretch awkwardly */
+.cardInner > .mainCard {
+  width: 100%;
+  /* friendly rounded corners and visible background */
+  border-radius: 16px;
+  /* subtle off-white gradient to give the same warm pill feel */
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  overflow: hidden;
+  padding: 0; /* inner sections control their own padding */
+  position: relative;
+  /* layered shadows tuned to the reference (slightly stronger, soft edges) */
+  box-shadow: 0 24px 80px -44px rgba(2,6,23,0.22), 0 14px 52px -38px rgba(2,6,23,0.16);
+  /* stronger border thickness to match reference */
+  border: 3px solid rgba(15,23,42,0.28);
+}
+
+.cardInner > .mainCard::before {
+  content: "";
+  position: absolute;
+  /* move inset inward to account for thicker outer border */
+  inset: 10px;
+  border-radius: 12px;
+  pointer-events: none;
+  /* inner stroke that matches the pill border intensity */
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,0.16);
+}
+
+.cardInner > .mainCard::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 22px;
+  pointer-events: none;
+  /* faint outer glow to soften edges (slightly heavier) */
+  filter: blur(10px);
+  background: rgba(2,6,23,0.06);
+}
+
+/* Slightly tighten radius on very small screens */
+@media (max-width: 640px) {
+  .cardInner > .mainCard {
+    border-radius: 12px;
+  }
+}
+
+/* Ensure uploaded avatar images inside the settings card are constrained and cover the circle */
+.cardInner img[alt="avatar"] {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: none !important;
+}
+
+/* Constrain avatar container sizes so uploaded images cannot overflow */
+.cardInner .avatarWrap,
+.cardInner .h-20.w-20,
+.cardInner .h-24.w-24,
+.cardInner .h-20,
+.cardInner .h-24 {
+  width: 92px !important;
+  height: 92px !important;
+  max-width: 92px !important;
+  max-height: 92px !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Avatar upload UI */
+.avatarContainer {
+  width: 92px;
+  height: 92px;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 6px solid rgba(255,255,255,0.95);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+}
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.avatarActions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.avatarActions button {
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: white;
+  cursor: pointer;
+}
+.avatarActions .remove {
+  background: transparent;
+  color: #ef4444;
+  border-color: rgba(239,68,68,0.12);
+}
