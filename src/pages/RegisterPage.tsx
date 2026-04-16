@@ -5,6 +5,11 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { setAuthSession } from '../utils/authStorage';
 
+const RAW_API_BASE_URL = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_API_URL || '';
+const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
+  ? RAW_API_BASE_URL.replace(/\/$/, '')
+  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
+
 export default function RegisterPage() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -20,7 +25,7 @@ export default function RegisterPage() {
     onSuccess: async (tokenResponse) => {
       try {
         setLoading(true);
-        const res = await axios.post('http://localhost:5000/api/auth/google-login', {
+        const res = await axios.post(`${API_BASE_URL}/auth/google-login`, {
           token: tokenResponse.access_token
         });
         setAuthSession(res.data.token, res.data.user, true);

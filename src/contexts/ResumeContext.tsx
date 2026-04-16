@@ -480,7 +480,7 @@ export const ResumeProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           || localStorage.getItem('token')
           || sessionStorage.getItem('token')
         : null;
-      const rawApiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const rawApiBase = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_API_URL || '';
       const apiBase = rawApiBase.replace(/\/$/, '').endsWith('/api')
         ? rawApiBase.replace(/\/$/, '')
         : `${rawApiBase.replace(/\/$/, '')}/api`;

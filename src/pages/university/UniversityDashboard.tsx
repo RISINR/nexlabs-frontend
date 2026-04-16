@@ -86,6 +86,11 @@ const FACULTY_PRESETS = [
   'Business Administration'
 ];
 
+const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
+  ? RAW_API_BASE_URL.replace(/\/$/, '')
+  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
+
 export default function UniversityDashboard() {
   const [dashboard, setDashboard] = useState<DashboardData>(buildMockDashboardData());
   const [selectedFaculty, setSelectedFaculty] = useState(FACULTY_NAME);
@@ -97,7 +102,7 @@ export default function UniversityDashboard() {
   useEffect(() => {
     const loadFacultyOptions = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/programs');
+        const response = await fetch(`${API_BASE_URL}/programs`);
         if (!response.ok) {
           return;
         }
@@ -132,7 +137,7 @@ export default function UniversityDashboard() {
       try {
         const token = localStorage.getItem('nexlabs_token') || sessionStorage.getItem('nexlabs_token');
         const response = await fetch(
-          `http://localhost:5000/api/university/faculty-dashboard?faculty=${encodeURIComponent(selectedFaculty)}&months=${selectedMonths}`,
+          `${API_BASE_URL}/university/faculty-dashboard?faculty=${encodeURIComponent(selectedFaculty)}&months=${selectedMonths}`,
           {
             signal: controller.signal,
             headers: token ? { Authorization: `Bearer ${token}` } : {}

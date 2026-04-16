@@ -11,7 +11,7 @@ import type {
 } from './aiBiasSchemas';
 
 const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env || {};
-const API_BASE_URL = env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = env.VITE_API_URL || '';
 
 class AIService {
   private baseURL: string;

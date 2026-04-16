@@ -10,7 +10,7 @@ import logo3 from "../assets/images/logo3.png";
 import logo4 from "../assets/images/logo4.png";
 import logo5 from "../assets/images/logo5.png";
 
-const RAW_API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const RAW_API_BASE = import.meta.env.VITE_API_URL || '';
 const API_BASE = RAW_API_BASE.replace(/\/$/, '').endsWith('/api')
   ? RAW_API_BASE.replace(/\/$/, '')
   : `${RAW_API_BASE.replace(/\/$/, '')}/api`;
