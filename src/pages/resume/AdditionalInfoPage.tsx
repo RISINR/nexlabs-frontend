@@ -5,6 +5,7 @@ import { useResume, Certification, Language, Award } from '../../contexts/Resume
 import ResumePreview from '../../components/resume/ResumePreview';
 import InterestIcon from '../../components/icons/InterestIcon';
 import { ArrowLeft, Plus, X, Award as AwardIcon, Globe, BadgeCheck, Sparkles } from 'lucide-react';
+import { API_BASE_URL } from '../../utils/apiBase';
 import styles from './BasicInfoPage.module.css';
 
 // Helper function to get auth headers with JWT token
@@ -21,11 +22,6 @@ function getAuthHeaders() {
     ...(token && { Authorization: `Bearer ${token}` })
   };
 }
-
-const RAW_API_BASE = import.meta.env.VITE_API_URL || '';
-const API_BASE = RAW_API_BASE.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE.replace(/\/$/, '')
-  : `${RAW_API_BASE.replace(/\/$/, '')}/api`;
 
 const languageLevels = [
   'Native',
@@ -165,7 +161,7 @@ export default function AdditionalInfoPage() {
     setIsLoadingAI(true);
     setAiStatusLabel('AI กำลังแนะนำ Certifications');
     try {
-      const response = await fetch(`${API_BASE}/resume-ai/suggest-certifications`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/suggest-certifications`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({
@@ -191,7 +187,7 @@ export default function AdditionalInfoPage() {
     setIsLoadingAI(true);
     setAiStatusLabel('AI กำลังแนะนำ Languages');
     try {
-      const response = await fetch(`${API_BASE}/resume-ai/suggest-languages`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/suggest-languages`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({
@@ -223,7 +219,7 @@ export default function AdditionalInfoPage() {
     setIsLoadingAI(true);
     setAiStatusLabel('AI กำลังปรับข้อความ Award');
     try {
-      const response = await fetch(`${API_BASE}/resume-ai/improve-achievement`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/improve-achievement`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({

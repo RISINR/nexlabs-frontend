@@ -4,11 +4,7 @@ import { authAPI } from "../services/authAPI";
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { setAuthSession } from '../utils/authStorage';
-
-const RAW_API_BASE_URL = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_API_URL || '';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE_URL.replace(/\/$/, '')
-  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
+import { API_BASE_URL } from '../utils/apiBase';
 
 export default function RegisterPage() {
   const navigate = useNavigate();

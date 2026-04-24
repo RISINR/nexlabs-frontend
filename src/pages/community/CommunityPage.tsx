@@ -4,6 +4,7 @@ import { useResume } from '../../contexts/ResumeContext';
 import { Navbar } from '../../components/Navbar';
 import PostComposer from '../../components/community/PostComposer';
 import PostList, { Post } from '../../components/community/PostList';
+import { buildApiUrl } from '../../utils/apiBase';
 import styles from './CommunityPage.module.css';
 
 // helper to detect MongoDB ObjectId strings
@@ -112,7 +113,7 @@ export default function CommunityPage() {
       // fetch server posts
       let serverMapped: Post[] = [];
       try {
-        const res = await fetch('/api/community');
+        const res = await fetch(buildApiUrl('/community'));
         if (res.ok) {
           const data = await res.json();
           const items = data.data || [];
@@ -156,7 +157,7 @@ export default function CommunityPage() {
         const remaining: Post[] = [];
         for (const lp of localPosts) {
           try {
-            const res = await fetch('/api/community', {
+            const res = await fetch(buildApiUrl('/community'), {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
               body: JSON.stringify({ body: lp.content || '', attachments: lp.image || [], isPublic: true }),
@@ -204,9 +205,9 @@ export default function CommunityPage() {
     const fetchPublicUsers = async () => {
       try {
         // Prefer server-provided full public profiles (includes latest resume) if available
-        let res = await fetch('/api/users/public-full');
+        let res = await fetch(buildApiUrl('/users/public-full'));
         if (!res.ok) {
-          res = await fetch('/api/users/public');
+          res = await fetch(buildApiUrl('/users/public'));
         }
         if (!res.ok) return;
         const data = await res.json();
@@ -362,7 +363,7 @@ export default function CommunityPage() {
       let templatePreview: string | undefined = undefined;
       if (token) {
         try {
-          const res = await fetch('/api/resumes', { headers: { Authorization: `Bearer ${token}` } });
+          const res = await fetch(buildApiUrl('/resumes'), { headers: { Authorization: `Bearer ${token}` } });
           if (res.ok) {
             const data = await res.json();
             const items = data.data || [];
@@ -548,7 +549,7 @@ export default function CommunityPage() {
       setProfiles(prev => prev.map(x => x.id === p.id ? { ...x, views: (x.views || 0) + 1 } : x));
       // fire-and-forget POST to increment server-side view count
       if (isObjectId(p.id)) {
-        fetch(`/api/users/${encodeURIComponent(p.id)}/view`, { method: 'POST' }).then(async res => {
+        fetch(buildApiUrl(`/users/${encodeURIComponent(p.id)}/view`), { method: 'POST' }).then(async res => {
           if (res.ok) {
             const data = await res.json();
             const newViews = data.views;
@@ -588,7 +589,7 @@ export default function CommunityPage() {
 
       if (token) {
         try {
-          const res = await fetch('/api/community', {
+          const res = await fetch(buildApiUrl('/community'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
             body: JSON.stringify({ body: content || '', attachments: images || [], isPublic: true }),
@@ -636,7 +637,7 @@ export default function CommunityPage() {
     // If already liked, call unlike
     if ((post as any)._liked) {
       try {
-        const res = await fetch(`/api/community/${encodeURIComponent(id)}/unlike`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+        const res = await fetch(buildApiUrl(`/community/${encodeURIComponent(id)}/unlike`), { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
         if (!res.ok) {
           // fallback: decrement locally
           setPosts(prev => prev.map(p => p.id === id ? { ...p, likes: Math.max(0, (p.likes || 1) - 1), _liked: false } : p));
@@ -654,7 +655,7 @@ export default function CommunityPage() {
 
     // Not liked yet -> send like
     try {
-      const res = await fetch(`/api/community/${encodeURIComponent(id)}/like`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(buildApiUrl(`/community/${encodeURIComponent(id)}/like`), { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) {
         // fallback optimistic
         setPosts(prev => prev.map(p => p.id === id ? { ...p, likes: (p.likes || 0) + 1, _liked: true } : p));
@@ -694,7 +695,7 @@ export default function CommunityPage() {
 
       if (token && user) {
         try {
-          const res = await fetch(`/api/community/${encodeURIComponent(postId)}/reply`, {
+          const res = await fetch(buildApiUrl(`/community/${encodeURIComponent(postId)}/reply`), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
             body: JSON.stringify({ text: content })
@@ -724,7 +725,7 @@ export default function CommunityPage() {
     setPosts(prev => prev.map(p => p.id === postId ? { ...p, content: newContent } : p));
     if (!token) return; // no auth -> local change only
     try {
-      const res = await fetch(`/api/community/${encodeURIComponent(postId)}`, {
+      const res = await fetch(buildApiUrl(`/community/${encodeURIComponent(postId)}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ body: newContent }),
@@ -749,7 +750,7 @@ export default function CommunityPage() {
     const token = localStorage.getItem('nexlabs_token') || sessionStorage.getItem('nexlabs_token');
     if (!token) return;
     try {
-      const res = await fetch(`/api/community/${encodeURIComponent(postId)}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(buildApiUrl(`/community/${encodeURIComponent(postId)}`), { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) {
         // If delete failed, we could refetch; for now do nothing (post already removed locally)
       }
@@ -849,9 +850,9 @@ export default function CommunityPage() {
       // HTTP POST fallback (existing behavior)
       if (token) {
         try {
-          const res = await fetch(`/api/chats/${encodeURIComponent(selectedContactId)}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ text: v, parentMessageId: replyTo?.id || null }) });
+          const res = await fetch(buildApiUrl(`/chats/${encodeURIComponent(selectedContactId)}`), { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ text: v, parentMessageId: replyTo?.id || null }) });
           if (res.ok) {
-            const g = await fetch(`/api/chats/${encodeURIComponent(selectedContactId)}`, { headers: { Authorization: `Bearer ${token}` } });
+            const g = await fetch(buildApiUrl(`/chats/${encodeURIComponent(selectedContactId)}`), { headers: { Authorization: `Bearer ${token}` } });
             if (g.ok) {
               const data = await g.json();
               const msgs = data.data || [];
@@ -933,7 +934,7 @@ export default function CommunityPage() {
       const token = localStorage.getItem('nexlabs_token') || sessionStorage.getItem('nexlabs_token');
       if (token) {
         try {
-          const res = await fetch(`/api/chats/${encodeURIComponent(id)}`, { headers: { Authorization: `Bearer ${token}` } });
+          const res = await fetch(buildApiUrl(`/chats/${encodeURIComponent(id)}`), { headers: { Authorization: `Bearer ${token}` } });
           if (res.ok) {
             const data = await res.json();
             const msgs = data.data || [];
@@ -985,7 +986,7 @@ export default function CommunityPage() {
           if (idsToMark.length && token) {
             for (const nobj of idsToMark) {
               const nid = nobj && (nobj.id || nobj._id) ? (nobj.id || nobj._id) : String(nobj);
-              try { await fetch(`/api/notifications/${encodeURIComponent(nid)}/read`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }); } catch (e) { }
+              try { await fetch(buildApiUrl(`/notifications/${encodeURIComponent(nid)}/read`), { method: 'POST', headers: { Authorization: `Bearer ${token}` } }); } catch (e) { }
             }
           }
         } catch (e) {}
@@ -1038,7 +1039,7 @@ export default function CommunityPage() {
           return;
         }
 
-        const res = await fetch('/api/notifications', { headers: { Authorization: `Bearer ${token}` } });
+        const res = await fetch(buildApiUrl('/notifications'), { headers: { Authorization: `Bearer ${token}` } });
         if (!res.ok) return;
         const data = await res.json();
         const notes = data.data || data || [];
@@ -1187,7 +1188,7 @@ export default function CommunityPage() {
             } else {
               // try fetching minimal user info from server
               try {
-                const res = await fetch(`/api/users/${encodeURIComponent(sid)}`);
+                const res = await fetch(buildApiUrl(`/users/${encodeURIComponent(sid)}`));
                 if (res.ok) {
                   const data = await res.json();
                   const u = data && (data.data || data) || null;
@@ -1294,7 +1295,7 @@ export default function CommunityPage() {
                               try {
                                 if ((p as any)._viewsFetched) return;
                                 if (!isObjectId(p.id)) return;
-                                const res = await fetch(`/api/users/${encodeURIComponent(p.id)}`);
+                                const res = await fetch(buildApiUrl(`/users/${encodeURIComponent(p.id)}`));
                                 if (!res.ok) return;
                                 const data = await res.json();
                                 const u = data.data || data;

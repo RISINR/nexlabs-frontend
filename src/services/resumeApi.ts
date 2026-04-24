@@ -1,11 +1,7 @@
 import { useState, useCallback } from 'react';
 import { ResumeData } from '../contexts/ResumeContext';
 import { getAuthToken } from '../utils/authStorage';
-
-const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE_URL.replace(/\/$/, '')
-  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
+import { API_BASE_URL } from '../utils/apiBase';
 
 // Helper function to get auth headers with JWT token
 function getAuthHeaders() {

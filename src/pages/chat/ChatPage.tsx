@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import styles from '../community/CommunityPage.module.css';
 import { MOCK } from '../community/CommunityPage';
+import { buildApiUrl } from '../../utils/apiBase';
 
 export default function ChatPage() {
   const { id } = useParams();
@@ -79,7 +80,7 @@ export default function ChatPage() {
 
     // fallback: HTTP POST
     try {
-      const res = await fetch(`/api/chats/${encodeURIComponent(String(id))}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '' }, body: JSON.stringify({ text: v }) });
+      const res = await fetch(buildApiUrl(`/chats/${encodeURIComponent(String(id))}`), { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : '' }, body: JSON.stringify({ text: v }) });
       const json = await res.json();
       if (json && json.success && json.message) {
         const m = json.message;

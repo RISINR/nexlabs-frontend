@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { Navbar } from "../components/Navbar";
 import ProfileForm from "../components/settings/ProfileForm";
 import AccountForm from "../components/settings/AccountForm";
+import { buildBackendUrl } from '../utils/apiBase';
 import styles from './SettingsPage.module.css';
 
 // Simple Icon Components
@@ -134,7 +135,7 @@ export default function SettingsPage() {
   const handleConnectGitHubSSO = () => {
     // Open SSO window (backend endpoint should handle the OAuth flow)
     try {
-      window.open('/auth/github/university', 'github_sso', 'width=600,height=700');
+      window.open(buildBackendUrl('/auth/github/university'), 'github_sso', 'width=600,height=700');
     } catch (e) {
       console.warn('Could not open SSO window', e);
     }
@@ -161,7 +162,7 @@ export default function SettingsPage() {
 
   const handleConnectGitHub = () => {
     try {
-      window.open('/auth/github', 'github_connect', 'width=600,height=700');
+      window.open(buildBackendUrl('/auth/github'), 'github_connect', 'width=600,height=700');
     } catch (e) {
       console.warn('Could not open GitHub window', e);
     }

@@ -26,6 +26,7 @@ import {
   YAxis
 } from 'recharts';
 import { Navbar } from '../../components/Navbar';
+import { API_BASE_URL } from '../../utils/apiBase';
 import './UniversityDashboardCreative.css';
 
 type RadarPoint = {
@@ -85,11 +86,6 @@ const FACULTY_PRESETS = [
   'Data Science',
   'Business Administration'
 ];
-
-const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE_URL.replace(/\/$/, '')
-  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
 
 export default function UniversityDashboard() {
   const [dashboard, setDashboard] = useState<DashboardData>(buildMockDashboardData());

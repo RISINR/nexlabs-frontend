@@ -1,9 +1,5 @@
 import { clearAuthSession } from '../utils/authStorage';
-
-const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE_URL.replace(/\/$/, '')
-  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
+import { API_BASE_URL } from '../utils/apiBase';
 
 export const authAPI = {
   register: async (firstName: string, lastName: string, email: string, password: string, displayName?: string) => {

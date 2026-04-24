@@ -9,15 +9,13 @@ import type {
   BiasThresholdUpdatePayload,
   BiasThresholdUpsertApiResponse,
 } from './aiBiasSchemas';
-
-const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env || {};
-const API_BASE_URL = env.VITE_API_URL || '';
+import { API_BASE_URL } from '../utils/apiBase';
 
 class AIService {
   private baseURL: string;
 
   constructor() {
-    this.baseURL = `${API_BASE_URL}/api/ai`;
+    this.baseURL = `${API_BASE_URL}/ai`;
   }
 
   /**
@@ -310,7 +308,7 @@ class AIService {
 
   async suggestSkillsForRole(roleTitle: string) {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/resume-ai/suggest-skills-for-role`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/suggest-skills-for-role`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

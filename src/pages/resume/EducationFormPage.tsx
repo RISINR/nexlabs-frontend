@@ -4,6 +4,7 @@ import { Navbar } from '../../components/Navbar';
 import { useResume } from '../../contexts/ResumeContext';
 import ResumePreview from '../../components/resume/ResumePreview';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { API_BASE_URL } from '../../utils/apiBase';
 import styles from './BasicInfoPage.module.css';
 
 interface UniversityItem {
@@ -19,10 +20,6 @@ interface ProgramItem {
   faculty?: string[];
 }
 
-const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
-const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE_URL.replace(/\/$/, '')
-  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
 const MIN_GRADUATION_YEAR = 1900;
 const MAX_GRADUATION_YEAR = new Date().getFullYear() + 10;
 

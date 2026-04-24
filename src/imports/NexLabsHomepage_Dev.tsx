@@ -9,11 +9,7 @@ import logo2 from "../assets/images/logo2.png";
 import logo3 from "../assets/images/logo3.png";
 import logo4 from "../assets/images/logo4.png";
 import logo5 from "../assets/images/logo5.png";
-
-const RAW_API_BASE = import.meta.env.VITE_API_URL || '';
-const API_BASE = RAW_API_BASE.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE.replace(/\/$/, '')
-  : `${RAW_API_BASE.replace(/\/$/, '')}/api`;
+import { API_BASE_URL } from '../utils/apiBase';
 
 /**
  * NexLabs Homepage Development Version
@@ -37,7 +33,7 @@ export default function NexLabs_HomepageDev() {
 
     const loadTrustMetrics = async () => {
       try {
-        const response = await fetch(`${API_BASE}/users/trust-metrics`);
+        const response = await fetch(`${API_BASE_URL}/users/trust-metrics`);
         if (!response.ok) {
           throw new Error('Failed to fetch trust metrics');
         }

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from 'react';
 import { useUpdateResume } from '../services/resumeApi';
+import { API_BASE_URL } from '../utils/apiBase';
 
 export interface Education {
   university: string;
@@ -480,12 +481,7 @@ export const ResumeProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           || localStorage.getItem('token')
           || sessionStorage.getItem('token')
         : null;
-      const rawApiBase = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_API_URL || '';
-      const apiBase = rawApiBase.replace(/\/$/, '').endsWith('/api')
-        ? rawApiBase.replace(/\/$/, '')
-        : `${rawApiBase.replace(/\/$/, '')}/api`;
-      
-      const response = await fetch(`${apiBase}/resume/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/resume/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           ...(token && { Authorization: `Bearer ${token}` })

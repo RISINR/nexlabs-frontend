@@ -7,6 +7,7 @@ import { ArrowLeft, Briefcase, Award, Users, FolderKanban, Pencil, Trash2, Plus,
 import ResumePreview from '../../components/resume/ResumePreview';
 import { getAuthUser } from '../../utils/authStorage';
 import { useConfirmDialog } from '../../components/ui/ConfirmDialogProvider';
+import { API_BASE_URL } from '../../utils/apiBase';
 import styles from './BasicInfoPage.module.css';
 
 // Helper function to get auth headers with JWT token
@@ -23,11 +24,6 @@ function getAuthHeaders() {
     ...(token && { Authorization: `Bearer ${token}` })
   };
 }
-
-const RAW_API_BASE = import.meta.env.VITE_API_URL || '';
-const API_BASE = RAW_API_BASE.replace(/\/$/, '').endsWith('/api')
-  ? RAW_API_BASE.replace(/\/$/, '')
-  : `${RAW_API_BASE.replace(/\/$/, '')}/api`;
 
 export default function ExperienceStackPage() {
   const navigate = useNavigate();
@@ -244,7 +240,7 @@ export default function ExperienceStackPage() {
     setSelectedExpIdForAI(expId);
     setAiStatusLabel(`Improving STAR for ${exp.title}`);
     try {
-      const response = await fetch(`${API_BASE}/resume-ai/improve-experience`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/improve-experience`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({
@@ -303,7 +299,7 @@ export default function ExperienceStackPage() {
     setSelectedExpIdForAI(expId);
     setAiStatusLabel(`Generating role-based skills for ${exp.title}`);
     try {
-      const response = await fetch(`${API_BASE}/resume-ai/generate-skills`, {
+      const response = await fetch(`${API_BASE_URL}/resume-ai/generate-skills`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({

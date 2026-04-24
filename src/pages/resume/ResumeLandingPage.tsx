@@ -12,6 +12,7 @@ import { useConfirmDialog } from '../../components/ui/ConfirmDialogProvider';
 import { calculateResumeProgress, ResumeProgressSummary } from '../../utils/resumeProgress';
 import { completeDemoResume } from '../../data/demoData';
 import ResumePreview from '../../components/resume/ResumePreview';
+import { API_BASE_URL } from '../../utils/apiBase';
 import styles from './TemplateSelectionPage.module.css';
 
 interface ResumeItem {
@@ -109,10 +110,6 @@ export default function ResumeLandingPage() {
   } = useResume();
   const confirmDialog = useConfirmDialog();
 
-  const RAW_API_BASE_URL = import.meta.env.VITE_API_URL || '';
-  const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
-    ? RAW_API_BASE_URL.replace(/\/$/, '')
-    : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
 
   useEffect(() => {
     fetchResumes();

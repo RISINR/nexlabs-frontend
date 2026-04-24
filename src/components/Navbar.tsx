@@ -4,6 +4,7 @@ import { io as ioClient } from 'socket.io-client';
 import { motion } from "framer-motion"; 
 import imgLogo from "../assets/NexLabsLogo.png";
 import { clearAuthSession, getAuthToken } from '../utils/authStorage';
+import { BACKEND_ORIGIN, buildApiUrl } from '../utils/apiBase';
 import { useConfirmDialog } from './ui/ConfirmDialogProvider';
 
 export function Navbar() {
@@ -270,7 +271,7 @@ export function Navbar() {
       try {
         const token = getAuthToken();
         if (token) {
-          const res = await fetch('/api/notifications', { headers: { Authorization: `Bearer ${token}` } });
+          const res = await fetch(buildApiUrl('/notifications'), { headers: { Authorization: `Bearer ${token}` } });
           if (res.ok) {
             const data = await res.json();
             const rawList = Array.isArray(data) ? data : (data.notifications || data.data || []);
@@ -326,7 +327,7 @@ export function Navbar() {
       return;
     }
     try {
-    socket = ioClient(window.location.origin, { query: { token } });
+    socket = ioClient(BACKEND_ORIGIN || window.location.origin, { query: { token } });
     try { (window as any).__nexlabs_socket = socket; } catch (e) {}
       socket.on('connect', () => {
         // connected
@@ -377,7 +378,7 @@ export function Navbar() {
     const token = getAuthToken();
     if (!token) return;
     try {
-      await fetch(`/api/notifications/${id}/read`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+      await fetch(buildApiUrl(`/notifications/${id}/read`), { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
     } catch (e) {
       // ignore
     }
